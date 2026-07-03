@@ -2,37 +2,29 @@ import { supabase } from "./supabaseClient.js";
 
 async function loadVideos(){
 
-    const {data,error}=await supabase
+    const { data, error } = await supabase
         .from("posts")
         .select("*")
         .eq("media_type","video")
         .order("created_at",{ascending:false});
 
     if(error){
-        alert(error.message);
+        console.error(error);
         return;
     }
 
-    const feed=document.getElementById("feed");
+    const feed=document.getElementById("videoFeed");
 
     feed.innerHTML="";
 
     data.forEach(post=>{
 
-        feed.innerHTML+=`
-
+        feed.innerHTML += `
         <div class="video-card">
 
-            <video
-                controls
-                autoplay
-                muted
-                loop
-                playsinline>
+            <video controls>
 
-                <source
-                src="${post.video_url}"
-                type="video/mp4">
+                <source src="${post.media_url}" type="video/mp4">
 
             </video>
 
@@ -42,10 +34,19 @@ async function loadVideos(){
 
                 <p>${post.description}</p>
 
+                <div class="stats">
+
+                    ❤️ ${post.likes_count}
+
+                    💬 ${post.comments_count}
+
+                    👁️ ${post.views_count}
+
+                </div>
+
             </div>
 
         </div>
-
         `;
 
     });
