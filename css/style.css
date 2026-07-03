@@ -45,4 +45,60 @@ video{
 
 .info p{
     max-width:350px;
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#111;
+    color:white;
+}
+
+header{
+    padding:20px;
+    text-align:center;
+    background:#1c1c1c;
+}
+
+header h1{
+    margin-bottom:10px;
+}
+
+#videoFeed{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    display:grid;
+    gap:30px;
+}
+
+.video-card{
+    background:#222;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 20px rgba(0,0,0,.3);
+}
+
+.video-card video{
+    width:100%;
+    display:block;
+}
+
+.info{
+    padding:15px;
+}
+
+.info h2{
+    margin-bottom:10px;
+}
+
+.stats{
+    margin-top:15px;
+    display:flex;
+    gap:20px;
+    color:#aaa;
+}  
 }
